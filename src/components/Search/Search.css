@@ -1,0 +1,16 @@
+.search-ui input{
+  width: 500px;
+  height: 50px;
+  border-radius: 4px;
+  color: rosybrown;
+  text-align: center;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px rgba(143, 87, 87, 0.1); 
+  margin: 1rem 0 0 0;
+}
+
+#text-input{
+    text-transform: capitalize;
+    font-size: 1.15rem;
+
+}

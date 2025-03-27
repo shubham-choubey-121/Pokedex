@@ -1,0 +1,12 @@
+.Pokemon-List{
+    text-align: center;
+    margin:  1rem 0 0 0;
+    font-size: 20px;
+    
+}
+.card-box{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
