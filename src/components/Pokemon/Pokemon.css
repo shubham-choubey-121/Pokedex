@@ -1,4 +1,20 @@
 .pokemon-card{
-    width: 25%;
+    width: 20%;
     height: 50%;
+    padding: 1rem;
+    font-family: var(--font-primary);
+    text-transform: var(--text-transform);
+}
+
+.pokemon-card{
+    border:  1px solid black;
+    border-radius: 15px;
+
+}
+
+.pokemon-card:hover{
+    background-color: #FFFEB3;
+    cursor: pointer;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }

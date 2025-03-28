@@ -5,15 +5,24 @@ import './PokemonList.css'
 import Pokemon from "../Pokemon/Pokemon";
 
 
+
+
 function PokemonList() {
 
      const [poke, setPoke] = useState([]);
      const [loading, setLoading] = useState(true);
+     const [pokedex_Url, setPokedex_Url] = useState("https://pokeapi.co/api/v2/pokemon"); 
+     const [prev, setPrev]=useState('');
+     const [next, setNext]=useState('');
 
+    //fetching by using axios
      const fetchPokemon = async () =>{
-
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon')
+        setLoading(true);
+        const response = await axios.get(pokedex_Url)
         console.log(response.data);
+
+        setPrev(response.data.previous);
+        setNext(response.data.next);
 
         const pokemonResult = response.data.results;
         const pokemonResultPromise = pokemonResult.map((pokemon) => axios.get(pokemon.url)); 
@@ -33,7 +42,7 @@ function PokemonList() {
 
             }
         });
-
+       
         console.log(res);
         setPoke(res);
         setLoading(false);
@@ -47,13 +56,18 @@ function PokemonList() {
            
             fetchPokemon();
 
-        }, []);
+        }, [pokedex_Url]);
 
 
 
     return(
         <div className="Pokemon-List">
+             <div className="btn-controls">
+                <button disabled={prev === null} onClick={() => setPokedex_Url(prev)}>prev</button>
+                <button disabled={next === null} onClick={() => setPokedex_Url(next)}>next</button>
+            </div>
             <h1>Pokemon List</h1>
+            
             <div className="card-box">
                 {loading ? 'Loading .....' : 
                     poke.map((p) => (
@@ -65,8 +79,8 @@ function PokemonList() {
                     />
                 ))
                 }
-            
             </div>
+           
         </div>
     )
 
